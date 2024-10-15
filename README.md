@@ -1,5 +1,3 @@
-# README do Projeto CRUD de Tarefas
-
 ## Descrição
 
 Este projeto é uma API RESTful para gerenciar tarefas, construída usando o **NestJS** e **TypeORM** com um banco de dados **PostgreSQL**. A API permite operações CRUD (Criar, Ler, Atualizar e Deletar) para tarefas.

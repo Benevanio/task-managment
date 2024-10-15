@@ -1,85 +1,163 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# README do Projeto CRUD de Tarefas
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Descrição
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Este projeto é uma API RESTful para gerenciar tarefas, construída usando o **NestJS** e **TypeORM** com um banco de dados **PostgreSQL**. A API permite operações CRUD (Criar, Ler, Atualizar e Deletar) para tarefas.
 
-## Description
+## Tecnologias Utilizadas
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **NestJS**: Framework para construir aplicações Node.js eficientes e escaláveis.
+- **TypeORM**: ORM para TypeScript e JavaScript que suporta vários bancos de dados, incluindo PostgreSQL.
+- **PostgreSQL**: Sistema de gerenciamento de banco de dados relacional.
+- **Postman**: Ferramenta para testar APIs.
 
-## Project setup
+## Estrutura do Projeto
 
-```bash
-$ npm install
+```
+/crud
+  ├── /src
+  │   ├── /tasks
+  │   │   ├── /controller
+  │   │   │   └── task.controller.ts
+  │   │   ├── /service
+  │   │   │   └── task.service.ts
+  │   │   ├── task.entity.ts
+  │   │   └── task.module.ts
+  │   ├── app.controller.ts
+  │   ├── app.module.ts
+  │   ├── app.service.ts
+  │   └── main.ts
+  ├── package.json
+  ├── docker-compose.yml
+  └── Dockerfile
 ```
 
-## Compile and run the project
+## Requisitos
+
+- Node.js (>= 14.x)
+- PostgreSQL (>= 13.x)
+- Docker e Docker Compose (opcional, para execução em contêineres)
+
+## Instalação
+
+1. **Clone o repositório**:
+
+   ```bash
+   git clone <URL_DO_REPOSITORIO>
+   cd crud
+   ```
+
+2. **Instale as dependências**:
+
+   ```bash
+   npm install
+   ```
+
+3. **Configuração do Banco de Dados**:
+
+   Você pode configurar o banco de dados PostgreSQL diretamente ou usar o Docker:
+
+   - **Usando Docker**:
+     Execute o comando a seguir para iniciar o banco de dados:
+
+     ```bash
+     docker-compose up -d
+     ```
+
+   - **Configuração Manual**:
+     Crie um banco de dados PostgreSQL chamado `crud` e um usuário com permissões adequadas.
+
+4. **Configuração das Variáveis de Ambiente**:
+
+   Configure as variáveis de ambiente no seu arquivo `.env`:
+
+   ```plaintext
+   DB_TYPE=postgres
+   DB_HOST=localhost
+   DB_PORT=5432
+   DB_USERNAME=postgres
+   DB_PASSWORD=postgres
+   DB_NAME=crud
+   ```
+
+5. **Executar a Aplicação**:
+
+   Inicie o servidor:
+
+   ```bash
+   npm run start:dev
+   ```
+
+   A aplicação estará disponível em `http://localhost:3000`.
+
+## Endpoints da API
+
+### 1. **Criar Tarefa**
+
+- **Método**: `POST /tasks`
+- **Corpo**:
+  ```json
+  {
+      "title": "Nova Tarefa",
+      "description": "Descrição da tarefa",
+      "status": 1,
+      "createdAt": "2024-10-14T00:00:00Z",
+      "updatedAt": "2024-10-14T00:00:00Z",
+      "createdBy": "usuario@exemplo.com"
+  }
+  ```
+
+### 2. **Listar Tarefas**
+
+- **Método**: `GET /tasks`
+
+### 3. **Buscar Tarefa por ID**
+
+- **Método**: `GET /tasks/:id`
+
+### 4. **Atualizar Tarefa**
+
+- **Método**: `PUT /tasks/:id`
+- **Corpo**: (mesmo formato do POST)
+
+### 5. **Deletar Tarefa**
+
+- **Método**: `DELETE /tasks/:id`
+
+## Testes com Postman
+
+O Postman foi utilizado para testar todos os endpoints da API. Você pode importar a coleção de requisições no Postman:
+
+1. **Exportar Coleção**: 
+   Exporte a coleção de requisições do Postman (arquivo `.json`) para facilitar os testes.
+
+2. **Executar Testes**:
+   Cada requisição inclui testes automatizados para verificar se os endpoints estão funcionando conforme o esperado.
+
+## Testes com Newman
+
+Você pode executar os testes definidos no Postman usando o Newman, que é um CLI para Postman.
+
+### Instalação do Newman
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm install -g newman
 ```
 
-## Run tests
+### Execução de Testes
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+newman run Teste-Tecnico-Sysmap.postman_collection.json
 ```
 
-## Resources
+## Contribuição
 
-Check out a few resources that may come in handy when working with NestJS:
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma *issue* ou fazer um *pull request*.
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## Licença
 
-## Support
+Este projeto é licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para detalhes.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+---
 
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Sinta-se à vontade para fazer ajustes ou adicionar mais detalhes conforme necessário! Se precisar de mais alguma coisa, é só avisar.

@@ -34,16 +34,16 @@ Este projeto é uma API RESTful para gerenciar tarefas, construída usando o **N
 
 ## Requisitos
 
-- Node.js (>= 14.x)
+- Node.js (>= 19.x)
 - PostgreSQL (>= 13.x)
-- Docker e Docker Compose (opcional, para execução em contêineres)
+- Docker e Docker Compose 
 
 ## Instalação
 
 1. **Clone o repositório**:
 
    ```bash
-   git clone <URL_DO_REPOSITORIO>
+   git clone https://github.com/Benevanio/task-managment.git
    cd crud
    ```
 

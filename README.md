@@ -157,7 +157,3 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir uma *issue* ou f
 ## Licença
 
 Este projeto é licenciado sob a MIT License - veja o arquivo [LICENSE](LICENSE) para detalhes.
-
----
-
-Sinta-se à vontade para fazer ajustes ou adicionar mais detalhes conforme necessário! Se precisar de mais alguma coisa, é só avisar.
